@@ -1,59 +1,147 @@
-# MortyChatApp
+# Morty Chat Widget
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+A standalone chat widget built with Angular Elements that can be used as a web component (`<morty-chat-widget>`) in any website or framework.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 💬 Interactive chat interface
+- 🔧 Standalone web component (no Angular required to use)
+- 📦 Single JavaScript file bundle
+- 🎨 Customizable styling
+- 🚀 Easy integration with any website
 
-```bash
-ng serve
+## Quick Start
+
+### Using the Widget
+
+1. Include the JavaScript bundle in your HTML:
+```html
+<script src="path/to/morty-chat-widget.js"></script>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+2. Use the web component in your HTML:
+```html
+<morty-chat-widget></morty-chat-widget>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Complete Example
 
-```bash
-ng generate --help
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  
+  <!-- The chat widget -->
+  <morty-chat-widget></morty-chat-widget>
+  
+  <!-- Load the widget script -->
+  <script src="./morty-chat-widget.js"></script>
+</body>
+</html>
 ```
 
-## Building
+## Development
 
-To build the project run:
+### Prerequisites
 
+- Node.js (v18 or higher)
+- npm
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Building the Widget
 
 ```bash
-ng test
+# Build the Angular widget and bundle it
+npm run build:widget
 ```
 
-## Running end-to-end tests
+This will:
+1. Build the Angular widget (`npm run build`)
+2. Bundle it into a single JS file (`npm run bundle`)
+3. Output the final bundle to `demo/morty-chat-widget.js`
 
-For end-to-end (e2e) testing, run:
+### Development Server
 
 ```bash
-ng e2e
+# Build and serve the demo
+npm run dev
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+This will build the widget and start a local server at `http://localhost:8080` where you can test the widget.
 
-## Additional Resources
+### Individual Commands
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+# Build only the Angular widget
+npm run build
+
+# Bundle only (requires build first)
+npm run bundle
+
+# Serve the demo only
+npm run serve:demo
+```
+
+## Project Structure
+
+```
+src/
+├── widget.ts                 # Main entry point for the widget
+└── app/
+    └── chat-widget/
+        ├── chat-widget.ts     # Chat widget component
+        ├── chat-widget.html   # Component template
+        └── chat-widget.scss   # Component styles
+
+demo/
+├── index.html                # Demo HTML page
+└── morty-chat-widget.js      # Final bundled widget (generated)
+
+dist/                         # Angular build output
+rollup.config.js             # Rollup bundler configuration
+angular.json                 # Angular CLI configuration
+```
+
+## How It Works
+
+1. **Angular Elements**: The widget is built using Angular Elements, which allows Angular components to be used as custom elements (web components).
+
+2. **Standalone Component**: The `ChatWidgetComponent` is a standalone Angular component that doesn't require an Angular module.
+
+3. **Bundling**: Rollup bundles the Angular build output into a single JavaScript file that can be included in any HTML page.
+
+4. **Web Component**: The final bundle registers the `<morty-chat-widget>` custom element that can be used anywhere.
+
+## Customization
+
+The widget can be customized by modifying the component files:
+
+- **Functionality**: Edit `src/app/chat-widget/chat-widget.ts`
+- **Styling**: Edit `src/app/chat-widget/chat-widget.scss`
+- **Template**: Edit `src/app/chat-widget/chat-widget.html`
+
+After making changes, run `npm run build:widget` to rebuild the bundle.
+
+## Browser Support
+
+The widget supports all modern browsers that support Custom Elements (Web Components):
+- Chrome 67+
+- Firefox 63+
+- Safari 10.1+
+- Edge 79+
+
+## License
+
+UNLICENSED - Internal use only
